@@ -2,23 +2,23 @@
 var treeGrowValues = {};
 
 // function that creates a tree based on the user's criteria of height and character choice
-	var treeGrow = function (rows , treeBit) {
+	var treeGrow = function (object) {
 	//event.preventDefault();
 
 // puts the user's form inputs into an object
-	treeGrowValues.rows = document.getElementById('howHigh').value;
-	treeGrowValues.treebit = document.getElementById('character').value;
+	object.rows = document.getElementById('howHigh').value;
+	object.treebit = document.getElementById('character').value;
 
 // assures the user has entered a value for both fields. alert will notify user if a field is blank
-	if (treeGrowValues.rows=="" || isNaN(treeGrowValues.rows) || treeGrowValues.treebit=="") {
+	if (object.rows=="" || isNaN(object.rows) || object.treebit=="") {
 		alert("Please enter an appropriate value for both fields.")
 	} else {
 
 
 // loop to build tree with repeating character treeBit
 	var row = 1;
-	for (var i = treeGrowValues.rows; i > 0; i--) {
-		string = ' '.repeat(i-1) + treeGrowValues.treebit.repeat(row*2 - 1)
+	for (var i = object.rows; i > 0; i--) {
+		string = ' '.repeat(i-1) + object.treebit.repeat(row*2 - 1)
 		row++
 		console.log(string)
 	}
@@ -34,6 +34,6 @@ document.getElementById("growTreeButton").addEventListener("click", treeGrow);
 //only executes treeGrow function if the enter key is pressed
 function enterKeyListener(key) {
 	if(key.keyCode === 13)	{
-		treeGrow();
+		treeGrow(treeGrowValues);
 	}
 }
